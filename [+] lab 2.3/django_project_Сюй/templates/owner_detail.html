@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали владельца</title>
+</head>
+<body>
+    <h1>Информация о владельце</h1>
+    <p><strong>Имя пользователя:</strong> {{ owner.user.username }}</p>
+    <p><strong>Номер паспорта:</strong> {{ owner.user.passport_number }}</p>
+    <p><strong>Домашний адрес:</strong> {{ owner.user.home_address }}</p>
+    <p><strong>Национальность:</strong> {{ owner.user.nationality }}</p>
+    <h2>Список автомобилей владельца</h2>
+    <ul>
+        {% for ownership in owner.ownership_set.all %}
+            <li>
+                {{ ownership.car.brand }} {{ ownership.car.model }} ({{ ownership.car.license_plate }})
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

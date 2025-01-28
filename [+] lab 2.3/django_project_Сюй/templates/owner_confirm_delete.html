@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Удалить владельца</title>
+</head>
+<body>
+    <h1>Удалить владельца {{ owner.first_name }} {{ owner.last_name }}?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+    <a href="{% url 'owner_list' %}">Отмена</a>
+</body>
+</html>

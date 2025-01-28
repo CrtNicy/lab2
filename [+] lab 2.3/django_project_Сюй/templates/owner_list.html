@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список владельцев</title>
+</head>
+<body>
+    <h1>Список владельцев</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Имя пользователя</th>
+                <th>Номер паспорта</th>
+                <th>Домашний адрес</th>
+                <th>Национальность</th>
+                <th>Дата рождения</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for owner in owners %}
+                <tr>
+                    <td>{{ owner.user.username }}</td>
+                    <td>{{ owner.user.passport_number }}</td>
+                    <td>{{ owner.user.home_address }}</td>
+                    <td>{{ owner.user.nationality }}</td>
+                    <td>{{ owner.birth_date }}</td>
+                    <td>
+                        <a href="{% url 'owner_update' owner.pk %}">Редактировать</a> |
+                        <a href="{% url 'owner_delete' owner.pk %}">Удалить</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'owner_create' %}">Добавить нового владельца</a>
+</body>
+</html>
